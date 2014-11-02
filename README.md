@@ -1,10 +1,6 @@
 # burningswell/http-kit-component
 
-A HTTP Kit server (component)[https://github.com/stuartsierra/component]
-
-## Usage
-
-FIXME
+A HTTP Kit server [component](https://github.com/stuartsierra/component)
 
 ## License
 
