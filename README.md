@@ -1,4 +1,4 @@
-# burningswell/http-kit-component
+# HTTP Kit server component
 
 A HTTP Kit server [component](https://github.com/stuartsierra/component)
 
