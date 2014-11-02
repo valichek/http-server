@@ -4,7 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[com.stuartsierra/component "0.2.2"]
-                 [http-kit "2.1.16"]
+                 [http-kit "2.1.19"]
                  [org.clojure/clojure "1.6.0"]]
   :aliases {"lint" ["do" ["whitespace-linter"] ["eastwood"]]
             "ci" ["do" ["difftest"] ["lint"]]}
