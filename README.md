@@ -2,6 +2,10 @@
 
 A HTTP Kit server [component](https://github.com/stuartsierra/component)
 
+## Installation
+
+[![Clojars Project](http://clojars.org/burningswell/http-kit-component/latest-version.svg)](http://clojars.org/burningswell/http-kit-component)
+
 ## License
 
 Copyright © 2014 r0man
