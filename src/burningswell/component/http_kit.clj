@@ -36,14 +36,13 @@
 
   Optional HTTP Kit config:
 
-  :ip - Which IP to bind on
-  :max-body - The max. HTTP body size
-  :max-line - The max. initial HTTP line length
-  :port - Which port to listen on
-  :queue-size - max job queued before reject to project self
-  :thread - http worker thread count
-  :worker-name-prefix - The prfix used for worker threads
-  "
+  :ip                 - Which IP to bind on
+  :max-body           - The max. HTTP body size
+  :max-line           - The max. initial HTTP line length
+  :port               - Which port to listen on
+  :queue-size         - max job queued before reject to project self
+  :thread             - http worker thread count
+  :worker-name-prefix - The prfix used for worker threads"
   [{:keys [handler-fn ip max-body max-line port queue-size
            thread worker-name-prefix] :as config}]
   (map->HTTPKitServer config))
