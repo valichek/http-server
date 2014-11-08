@@ -5,7 +5,8 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[com.stuartsierra/component "0.2.2"]
                  [http-kit "2.1.19"]
-                 [org.clojure/clojure "1.6.0"]]
+                 [org.clojure/clojure "1.6.0"]
+                 [org.clojure/tools.logging "0.3.0"]]
   :aliases {"lint" ["do" ["whitespace-linter"] ["eastwood"]]
             "ci" ["do" ["difftest"] ["lint"]]}
   :deploy-repositories [["releases" :clojars]]
