@@ -1,8 +1,14 @@
 (ns burningswell.component.http-kit
   "HTTP Kit server component."
-  (:require [clojure.tools.logging :as log]
+  (:require [clojure.set :refer [rename-keys]]
+            [clojure.tools.logging :as log]
             [com.stuartsierra.component :as component]
             [org.httpkit.server :as httpkit]))
+
+(defn- http-kit-config [server]
+  (->> {:bind-address :ip
+        :bind-port :port}
+       (rename-keys server)))
 
 (defn start-server
   "Start the HTTP Kit server component."
@@ -10,10 +16,12 @@
   (if (:stop-fn server)
     server
     (let [handler (handler-fn server)
-          stop-fn (httpkit/run-server handler server)]
+          stop-fn (httpkit/run-server
+                   handler (rename-keys server {:bind-address :ip :bind-port :port}))]
       (assert handler "No Ring handler given.")
       (log/infof "HTTP Kit server started on %s:%s."
-                 (:ip server) (:port server))
+                 (:bind-address server)
+                 (:bind-port server))
       (assoc server :stop-fn stop-fn))))
 
 (defn stop-server
@@ -42,10 +50,10 @@
 
   Optional HTTP Kit config:
 
-  :ip                 - Which IP to bind on
+  :bind-address       - Which IP to bind on
+  :bind-port          - Which port to listen on
   :max-body           - The max. HTTP body size
   :max-line           - The max. initial HTTP line length
-  :port               - Which port to listen on
   :queue-size         - max job queued before reject to project self
   :thread             - http worker thread count
   :worker-name-prefix - The prfix used for worker threads"
@@ -53,11 +61,11 @@
            thread worker-name-prefix] :as config}]
   (map->HTTPKitServer
    (merge
-    {:ip "0.0.0.0"
+    {:bind-address "0.0.0.0"
+     :bind-port 8090
      :max-body 8388608
      :max-line 4096
      :max-ws 4194304
-     :port 8090
      :queue-size 20480
      :thread 4
      :worker-name-prefix "worker-"}
