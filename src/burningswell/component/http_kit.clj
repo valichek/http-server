@@ -16,8 +16,7 @@
   (if (:stop-fn server)
     server
     (let [handler (handler-fn server)
-          stop-fn (httpkit/run-server
-                   handler (rename-keys server {:bind-address :ip :bind-port :port}))]
+          stop-fn (httpkit/run-server handler (http-kit-config server))]
       (assert handler "No Ring handler given.")
       (log/infof "HTTP Kit server started on %s:%s."
                  (:bind-address server)
@@ -30,7 +29,7 @@
   (when-let [stop-fn (:stop-fn server)]
     (stop-fn)
     (log/infof "HTTP Kit server stopped on %s:%s."
-               (:ip server) (:port server)))
+               (:bind-address server) (:bind-port server)))
   (dissoc server :stop-fn))
 
 (defrecord HTTPKitServer [handler-fn stop-fn]
