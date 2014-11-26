@@ -1,4 +1,4 @@
-(defproject burningswell/http-server"0.1.6-SNAPSHOT"
+(defproject burningswell/http-server"0.1.6"
   :description "The Burning Swell HTTP server"
   :url "https://github.com/burningswell/http-kit-component"
   :license {:name "Eclipse Public License"
