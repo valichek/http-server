@@ -17,18 +17,18 @@
    :thread 4
    :worker-name-prefix "worker-"})
 
-(def Server
-  "The server schema."
-  {:handler-fn s/Any
-   (s/optional-key :bind-address) s/Str
-   (s/optional-key :bind-port) s/Int
-   (s/optional-key :max-body) s/Int
-   (s/optional-key :max-line) s/Int
-   (s/optional-key :max-ws) s/Int
-   (s/optional-key :queue-size) s/Int
-   (s/optional-key :thread) s/Int
-   (s/optional-key :worker-name-prefix) s/Str
-   s/Keyword s/Any})
+(s/defrecord Server
+  [bind-address :- s/Str
+   bind-port :- s/Int
+   handler-fn :- s/Any
+   max-body :- s/Int
+   max-line :- s/Int
+   max-ws :- s/Int
+   queue-size :- s/Int
+   stop-fn :- s/Any
+   thread :- s/Int
+   worker-name-prefix :- s/Str]
+  {s/Any s/Any})
 
 (s/defn ^:always-validate http-kit-config
   "Return the HTTPKit config."
@@ -58,10 +58,10 @@
     (stop-fn)
     (log/infof "HTTP Kit server stopped on %s:%s."
                (:bind-address server) (:bind-port server)))
-  (dissoc server :stop-fn))
+  (assoc server :stop-fn nil))
 
-(defrecord HTTPKitServer [handler-fn stop-fn]
-  component/Lifecycle
+(extend-protocol component/Lifecycle
+  Server
   (start [server]
     (start-server server))
   (stop [server]
@@ -85,6 +85,6 @@
   :queue-size         - max job queued before reject to project self
   :thread             - http worker thread count
   :worker-name-prefix - The prefix used for worker threads"
-  [config :- Server]
+  [config]
   (assert (ifn? (:handler-fn config)) "Not a function: :handler-fn")
-  (map->HTTPKitServer (merge *defaults* config)))
+  (map->Server (merge *defaults* config)))

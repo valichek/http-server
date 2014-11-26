@@ -12,7 +12,7 @@
             "lint" ["do" ["whitespace-linter"] ["eastwood"]]
             "test-ancient" ["test"]}
   :deploy-repositories [["releases" :clojars]]
-  :eastwood {:exclude-linters [:constant-test]}
+  :eastwood {:exclude-linters [:constant-test :redefd-vars :unused-ret-vals]}
   :profiles {:dev {:plugins [[jonase/eastwood "0.2.0"]
                              [lein-difftest "2.0.0"]
                              [listora/whitespace-linter "0.1.0"]]}})
