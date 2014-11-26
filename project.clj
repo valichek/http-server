@@ -1,4 +1,4 @@
-(defproject burningswell/http-kit-component "0.1.4"
+(defproject burningswell/http-kit-component "0.1.5-SNAPSHOT"
   :description "A HTTP Kit server component"
   :url "https://github.com/burningswell/http-kit-component"
   :license {:name "Eclipse Public License"
