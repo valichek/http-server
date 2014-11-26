@@ -1,4 +1,6 @@
-# HTTP Kit component [![Build Status](https://travis-ci.org/burningswell/http-kit-component.svg?branch=master)](https://travis-ci.org/burningswell/http-kit-component)
+# HTTP Kit component
+  [![Build Status](https://travis-ci.org/burningswell/http-kit-component.svg?branch=master)](https://travis-ci.org/burningswell/http-kit-component)
+  [![Dependencies Status](http://jarkeeper.com/burningswell/http-kit-component/status.png)](http://jarkeeper.com/burningswell/http-kit-component)
 
 A HTTP Kit server [component](https://github.com/stuartsierra/component)
 
