@@ -43,8 +43,9 @@
   (if (:stop-fn server)
     server
     (let [handler ((:handler-fn server) server)
-          stop-fn (httpkit/run-server handler (http-kit-config server))]
-      (assert handler "No Ring handler given.")
+          _ (assert handler "No Ring handler given.")
+          config (http-kit-config server)
+          stop-fn (httpkit/run-server handler config)]
       (log/infof "HTTP Kit server started on %s:%s."
                  (:bind-address server)
                  (:bind-port server))
