@@ -84,7 +84,7 @@
   :max-ws             - The max. websocket message size
   :queue-size         - max job queued before reject to project self
   :thread             - http worker thread count
-  :worker-name-prefix - The prfix used for worker threads"
+  :worker-name-prefix - The prefix used for worker threads"
   [config :- Server]
   (assert (ifn? (:handler-fn config)) "Not a function: :handler-fn")
   (map->HTTPKitServer (merge *defaults* config)))
