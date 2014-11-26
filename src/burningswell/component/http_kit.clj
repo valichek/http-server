@@ -43,7 +43,7 @@
   (if (:stop-fn server)
     server
     (let [handler ((:handler-fn server) server)
-          _ (assert handler "No Ring handler given.")
+          _ (assert (ifn? handler) "No Ring handler given.")
           config (http-kit-config server)
           stop-fn (httpkit/run-server handler config)]
       (log/infof "HTTP Kit server started on %s:%s."
@@ -86,4 +86,5 @@
   :thread             - http worker thread count
   :worker-name-prefix - The prfix used for worker threads"
   [config :- Server]
+  (assert (ifn? (:handler-fn config)) "Not a function: :handler-fn")
   (map->HTTPKitServer (merge *defaults* config)))
