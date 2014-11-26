@@ -1,5 +1,5 @@
-(ns burningswell.component.http-kit
-  "HTTP Kit server component."
+(ns burningswell.http.server
+  "The Burning Swell HTTP server"
   (:require [clojure.set :refer [rename-keys]]
             [clojure.tools.logging :as log]
             [com.stuartsierra.component :as component]
@@ -18,16 +18,16 @@
    :worker-name-prefix "worker-"})
 
 (s/defrecord Server
-  [bind-address :- s/Str
-   bind-port :- s/Int
-   handler-fn :- s/Any
-   max-body :- s/Int
-   max-line :- s/Int
-   max-ws :- s/Int
-   queue-size :- s/Int
-   stop-fn :- s/Any
-   thread :- s/Int
-   worker-name-prefix :- s/Str]
+    [bind-address :- s/Str
+     bind-port :- s/Int
+     handler-fn :- s/Any
+     max-body :- s/Int
+     max-line :- s/Int
+     max-ws :- s/Int
+     queue-size :- s/Int
+     stop-fn :- s/Any
+     thread :- s/Int
+     worker-name-prefix :- s/Str]
   {s/Any s/Any})
 
 (s/defn ^:always-validate http-kit-config

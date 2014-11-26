@@ -1,12 +1,12 @@
-# HTTP Kit component
-  [![Build Status](https://travis-ci.org/burningswell/http-kit-component.svg?branch=master)](https://travis-ci.org/burningswell/http-kit-component)
-  [![Dependencies Status](http://jarkeeper.com/burningswell/http-kit-component/status.png)](http://jarkeeper.com/burningswell/http-kit-component)
+# Burning Swell HTTP server
+  [![Build Status](https://travis-ci.org/burningswell/http-server.svg?branch=master)](https://travis-ci.org/burningswell/http-server)
+  [![Dependencies Status](http://jarkeeper.com/burningswell/http-server/status.png)](http://jarkeeper.com/burningswell/http-server)
 
-A HTTP Kit server [component](https://github.com/stuartsierra/component)
+The Burning Swell HTTP server
 
 ## Installation
 
-[![Clojars Project](http://clojars.org/burningswell/http-kit-component/latest-version.svg)](http://clojars.org/burningswell/http-kit-component)
+[![Clojars Project](http://clojars.org/burningswell/http-server/latest-version.svg)](http://clojars.org/burningswell/http-server)
 
 ## License
 

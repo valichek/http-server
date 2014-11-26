@@ -1,7 +1,7 @@
-(ns burningswell.component.http-kit-test
-  (:require [clojure.test :refer :all]
+(ns burningswell.http.server-test
+  (:require [burningswell.http.server :refer :all]
+            [clojure.test :refer :all]
             [com.stuartsierra.component :as component]
-            [burningswell.component.http-kit :refer :all]
             [org.httpkit.client :as http]))
 
 (defn handler-fn [server]
