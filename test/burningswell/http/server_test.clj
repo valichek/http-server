@@ -10,8 +10,8 @@
      :headers {"Content-Type" "text/plain"}
      :body "Hello world"}))
 
-(deftest test-http-kit-server
-  (let [server (http-kit-server {:handler-fn handler-fn})]
+(deftest test-http-server
+  (let [server (http-server {:handler-fn handler-fn})]
     (let [started (component/start server)]
       (is (fn? (:stop-fn started)))
       (let [response @(http/get "http://localhost:8090/")]

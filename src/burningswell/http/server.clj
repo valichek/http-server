@@ -67,7 +67,7 @@
   (stop [server]
     (stop-server server)))
 
-(s/defn ^:always-validate http-kit-server :- Server
+(s/defn ^:always-validate http-server :- Server
   "Make a new HTTP Kit server component.
 
   Required:
